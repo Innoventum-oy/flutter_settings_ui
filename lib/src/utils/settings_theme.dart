@@ -18,7 +18,17 @@ class SettingsTheme extends InheritedWidget {
   static SettingsTheme of(BuildContext context) {
     final SettingsTheme? result =
         context.dependOnInheritedWidgetOfExactType<SettingsTheme>();
-    return result!;
+    if (result == null) {
+      throw FlutterError(
+        'SettingsTheme.of() called with a context that does not contain a SettingsTheme.\n'
+        'No SettingsTheme ancestor could be found starting from the context that was passed to '
+        'SettingsTheme.of(). This can happen if the context you use comes from a widget that '
+        'does not have a SettingsTheme as an ancestor.\n'
+        'The context used was:\n'
+        '  $context',
+      );
+    }
+    return result;
   }
 }
 
